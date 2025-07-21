@@ -1,0 +1,19 @@
+{
+    "79cf7f1b-dabd-4d3b-9ef8-b0c169e20d14": {
+        "title": "MK3 Ultimate",
+        "category": "fighting",
+        "maxLevel": "9",
+        "imageUrl": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%2Fid%2FOIP.yOyxuuDluyftSsPWpDbJeAHaHa%3Fr%3D0%26pid%3DApi&f=1&ipt=e9f2c948d6ae3fe625514d40b264b10bd9173d4f8c2e7a339867aa048456b642&ipo=images",
+        "summary": "Mortal Kombat is a popular fighting game franchise that began in 1992, featuring a tournament where champions from different realms battle to prevent the evil forces of Outworld from conquering Earthrealm. The series is known for its graphic violence, including finishing moves called \"Fatalities,\" and has expanded into films, comics, and other media.",
+        "_id": "79cf7f1b-dabd-4d3b-9ef8-b0c169e20d14"
+    },
+    
+    "c1644883-ffae-4d31-bf93-270e02bd31fd": {
+        "title": "Counter Strike 1.6",
+        "category": "FPS",
+        "maxLevel": "101",
+        "imageUrl": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%2Fid%2FOIP.XUHEvlTu1ttARmG1sYJVZAAAAA%3Fr%3D0%26pid%3DApi&f=1&ipt=e49d5d1c41207232f5fc37124c8fde91c60ef680351dfd9cefdcc6090989cbb9&ipo=images",
+        "summary": "Counter-Strike is a 2000 tactical first-person shooter game developed by Valve Corporation and published by Sierra Studios. It is the first installment in the Counter-Strike series. The game pits two teams—the Counter-Terrorists and Terrorists—against each other in objective-based game modes.",
+        "_id": "c1644883-ffae-4d31-bf93-270e02bd31fd"
+    }
+}
