@@ -1,4 +1,12 @@
+import { useEffect } from "react"
+import gameService from "../../services/gameService"
+
 export default function GameCatalog() {
+    useEffect(() => {
+        gameService.getAll()
+            .then(result => console.log(result));
+    }, [])
+
     return (
         // <!-- Catalogue -->
         <section id="catalog-page">
