@@ -17,6 +17,18 @@ export const useGames = () => {
     }
 }
 
+export const useGame = (gameId) => {
+    const [game, setGame] = useState({});
+
+    useEffect(() => {
+        request.get(`${baseUrl}/${gameId}`)
+    }, [gameId])
+
+    return {
+        game,
+    }
+};
+
 export const useCreateGame = () => {
     const { accessToken } = useContext(UserContext);
 
