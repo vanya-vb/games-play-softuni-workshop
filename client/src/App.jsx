@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { Routes, Route } from 'react-router'
 
+import { UserContext } from './contexts/UserContext'
+
 import Header from './components/Header/Header'
 import Home from './components/Home/Home'
 import Login from './components/Login/Login'
@@ -13,31 +15,31 @@ import GameEdit from './components/GameEdit/GameEdit'
 import './App.css'
 
 function App() {
-  const [email, setEmail] = useState('');
+  const [authData, setAuthData] = useState({});
 
-  const userLoginHandler = (authData) => {
-    console.log(authData);
-    
-    setEmail(authData.email);
+  const userLoginHandler = (resultData) => {
+    setAuthData(resultData);
   };
 
   return (
-    <div id="box">
-      <Header />
+    <UserContext.Provider value={{ ...authData, userLoginHandler }}>
+      <div id="box">
+        <Header />
 
-      <main id="main-content">
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/games' element={<GameCatalog />} />
-          <Route path='/games/create' element={<GameCreate />} />
-          <Route path='/games/:gameId/details' element={<GameDetails email={email} />} />
-          <Route path='/games/:gameId/edit' element={<GameEdit />} />
-          <Route path='/login' element={<Login onLogin={userLoginHandler} />} />
-          <Route path='/register' element={<Register />} />
-        </Routes>
+        <main id="main-content">
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/games' element={<GameCatalog />} />
+            <Route path='/games/create' element={<GameCreate />} />
+            <Route path='/games/:gameId/details' element={<GameDetails />} />
+            <Route path='/games/:gameId/edit' element={<GameEdit />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/register' element={<Register />} />
+          </Routes>
 
-      </main>
-    </div>
+        </main>
+      </div>
+    </UserContext.Provider>
   )
 }
 
