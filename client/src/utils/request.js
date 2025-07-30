@@ -7,7 +7,10 @@ const request = async (method, url, data, options = {}) => {
     if (data) {
         options = {
             ...options,
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json',
+                ...options.headers,
+            },
             body: JSON.stringify(data),
         };
     }
