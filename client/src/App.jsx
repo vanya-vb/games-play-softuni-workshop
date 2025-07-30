@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Routes, Route } from 'react-router'
 
 import Header from './components/Header/Header'
@@ -8,8 +9,8 @@ import GameCreate from './components/GameCreate/GameCreate'
 import GameCatalog from './components/GameCatalog/GameCatalog'
 import GameDetails from './components/GameDetails/GameDetails'
 import GameEdit from './components/GameEdit/GameEdit'
+
 import './App.css'
-import { useState } from 'react'
 
 function App() {
   const [email, setEmail] = useState('');
