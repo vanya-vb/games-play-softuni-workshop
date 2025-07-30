@@ -1,11 +1,24 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
 import request from "../utils/request";
 
 const baseUrl = 'http://localhost:3030/data/games';
 
+export const useGames = () => {
+    const [games, setGames] = useState([]);
+
+    useEffect(() => {
+        request.get(baseUrl)
+            .then(setGames)
+    }, []);
+
+    return {
+        games,
+    }
+}
+
 export const useCreateGame = () => {
-    const {accessToken} = useContext(UserContext);
+    const { accessToken } = useContext(UserContext);
 
     const options = {
         headers: {
