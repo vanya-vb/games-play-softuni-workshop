@@ -22,12 +22,30 @@ export const useGame = (gameId) => {
 
     useEffect(() => {
         request.get(`${baseUrl}/${gameId}`)
-        .then(setGame);
+            .then(setGame);
     }, [gameId])
 
     return {
         game,
     };
+};
+
+export const useLatestGames = () => {
+    const [latestGames, setLatestGames] = useState([]);
+
+    useEffect(() => {
+        const searchParams = new URLSearchParams({
+            sortBy: '_createdOn desc',
+            pageSize: 3,
+        });
+
+        request.get(`${baseUrl}?${searchParams.toString()}`)
+            .then(setLatestGames)
+    }, []);
+
+    return {
+        latestGames,
+    }
 };
 
 export const useCreateGame = () => {
@@ -53,7 +71,7 @@ export const useEditGame = () => {
 };
 
 export const useDeleteGame = () => {
-    const {request} = useAuth();
+    const { request } = useAuth();
 
     const deleteGame = (gameId) =>
         request.delete(`${baseUrl}/${gameId}`);
