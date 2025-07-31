@@ -12,11 +12,12 @@ import GameCreate from './components/GameCreate/GameCreate'
 import GameCatalog from './components/GameCatalog/GameCatalog'
 import GameDetails from './components/GameDetails/GameDetails'
 import GameEdit from './components/GameEdit/GameEdit'
+import usePersistedState from './hooks/usePersistedState'
 
 import './App.css'
 
 function App() {
-  const [authData, setAuthData] = useState({});
+  const [authData, setAuthData] = usePersistedState('auth', {});
 
   const userLoginHandler = (resultData) => {
     setAuthData(resultData);
