@@ -11,8 +11,7 @@ import GameCatalog from './components/GameCatalog/GameCatalog'
 import GameDetails from './components/GameDetails/GameDetails'
 import GameEdit from './components/GameEdit/GameEdit'
 import Logout from './components/Logout/Logout'
-
-import './App.css'
+import AuthGuard from './components/guards/AuthGuardBasic'
 
 function App() {
   return (
@@ -24,7 +23,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/games' element={<GameCatalog />} />
-            <Route path='/games/create' element={<GameCreate />} />
+            <Route path='/games/create' element={<AuthGuard><GameCreate /></AuthGuard>} />
             <Route path='/games/:gameId/details' element={<GameDetails />} />
             <Route path='/games/:gameId/edit' element={<GameEdit />} />
             <Route path='/login' element={<Login />} />
