@@ -37,6 +37,9 @@ export default function GameDetails() {
             gameId,
             comment,
             pending: true,
+            author: {
+                email,
+            }
         };
 
         setOptimisticComments(optimisticState => [...optimisticState, newOptimisticComment]);
@@ -45,8 +48,7 @@ export default function GameDetails() {
         const commentResult = await create(gameId, comment);
 
         // local state update
-        setComments(state => [...state, commentResult]);
-        addComment(commentResult);
+        addComment({ ...commentResult, author: { email } });
     };
 
     const isOwner = userId === game._ownerId;
