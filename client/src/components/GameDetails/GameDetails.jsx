@@ -3,7 +3,7 @@ import CommentsShow from "../CommentsShow/CommentsShow";
 import CommentsCreate from "../CommentsCreate/CommentsCreate";
 import { useDeleteGame, useGame } from "../../api/gameApi";
 import useAuth from "../../hooks/useAuth";
-import { useComments } from "../../api/commentApi";
+import { useComments, useCreateComment } from "../../api/commentApi";
 
 export default function GameDetails() {
     const navigate = useNavigate();
@@ -11,7 +11,8 @@ export default function GameDetails() {
     const { gameId } = useParams();
     const { game } = useGame(gameId);
     const { deleteGame } = useDeleteGame();
-    const { comments } = useComments(gameId);
+    const { comments, setComments } = useComments(gameId);
+    const { create } = useCreateComment();
 
     const gameDeleteClickHandler = async () => {
         const hasConfirm = confirm(`Are you sure you want to delete ${game.title} game?`);
@@ -25,14 +26,15 @@ export default function GameDetails() {
         navigate('/games');
     };
 
-    const commentsCreateHandler = (newComment) => {
-        // setComments(state => [...state, newComment]);
+    const commentsCreateHandler = async (comment) => {
+        const newComment = await create(gameId, comment);
+
+        setComments(state => [...state, newComment]);
     };
 
     const isOwner = userId === game._ownerId;
 
     return (
-        // <!--Details Page-->
         <section id="game-details">
             <h1>Game Details</h1>
             <div className="info-section">
