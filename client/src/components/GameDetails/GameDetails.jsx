@@ -29,8 +29,10 @@ export default function GameDetails() {
         navigate('/games');
     };
 
-    const commentsCreateHandler = async (comment) => {
-        // optimistic update
+    const commentsCreateHandler = async (formData) => {
+        const comment = formData.get('comment');
+
+        // create optimistic comment
         const newOptimisticComment = {
             _id: uuid(),
             _ownerId: userId,
@@ -42,9 +44,10 @@ export default function GameDetails() {
             }
         };
 
-        setOptimisticComments(optimisticState => [...optimisticState, newOptimisticComment]);
+        // optimistic update
+        setOptimisticComments((optimisticState) => [...optimisticState, newOptimisticComment]);
 
-        // server update
+        // local state update
         const commentResult = await create(gameId, comment);
 
         // local state update
